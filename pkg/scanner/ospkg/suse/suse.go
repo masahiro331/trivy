@@ -1,7 +1,6 @@
 package suse
 
 import (
-	"fmt"
 	"strings"
 	"time"
 
@@ -12,6 +11,7 @@ import (
 	"github.com/aquasecurity/trivy/pkg/log"
 	"github.com/aquasecurity/trivy/pkg/scanner/utils"
 	"github.com/aquasecurity/trivy/pkg/types"
+	"github.com/aquasecurity/vuln-list-update/oval/suse"
 	version "github.com/knqyf263/go-rpm-version"
 	"golang.org/x/xerrors"
 	"k8s.io/utils/clock"
@@ -81,6 +81,10 @@ func (s *Scanner) Detect(osVer string, pkgs []analyzer.Package) ([]types.Detecte
 		}
 	case fos.OpenSUSELeap:
 		DBPrefix = "OpenSUSE Leap "
+	case fos.OpenSUSETumbleweed:
+		DBPrefix = "OpenSUSE Leap "
+		latestVersionIndex := len(suse.SuseOSes[suse.OpenSUSELeap])
+		osVer = suse.SuseOSes[suse.OpenSUSELeap][latestVersionIndex-1]
 	default:
 		return nil, xerrors.New("unsupported SUSE family")
 	}
@@ -91,7 +95,6 @@ func (s *Scanner) Detect(osVer string, pkgs []analyzer.Package) ([]types.Detecte
 		if err != nil {
 			return nil, xerrors.Errorf("failed to get SUSE advisory: %w", err)
 		}
-		fmt.Println(advisories)
 
 		installed := utils.FormatVersion(pkg)
 		installedVersion := version.NewVersion(installed)

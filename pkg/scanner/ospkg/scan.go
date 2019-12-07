@@ -55,6 +55,8 @@ func Scan(files extractor.FileMap) (string, string, []types.DetectedVulnerabilit
 		s = suse.NewScanner(fos.OpenSUSELeap)
 	case fos.SLES:
 		s = suse.NewScanner(fos.SLES)
+	case fos.OpenSUSETumbleweed:
+		s = suse.NewScanner(fos.OpenSUSETumbleweed)
 	default:
 		log.Logger.Warnf("unsupported os : %s", os.Family)
 		return "", "", nil, nil
