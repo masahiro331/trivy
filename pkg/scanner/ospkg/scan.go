@@ -7,8 +7,8 @@ import (
 	_ "github.com/aquasecurity/fanal/analyzer/os/alpine"
 	_ "github.com/aquasecurity/fanal/analyzer/os/amazonlinux"
 	_ "github.com/aquasecurity/fanal/analyzer/os/debianbase"
-	_ "github.com/aquasecurity/fanal/analyzer/os/opensuse"
 	_ "github.com/aquasecurity/fanal/analyzer/os/redhatbase"
+	_ "github.com/aquasecurity/fanal/analyzer/os/suse"
 	_ "github.com/aquasecurity/fanal/analyzer/pkg/apk"
 	_ "github.com/aquasecurity/fanal/analyzer/pkg/dpkg"
 	"github.com/aquasecurity/fanal/extractor"
@@ -19,6 +19,7 @@ import (
 	"github.com/aquasecurity/trivy/pkg/scanner/ospkg/debian"
 	"github.com/aquasecurity/trivy/pkg/scanner/ospkg/oracle"
 	"github.com/aquasecurity/trivy/pkg/scanner/ospkg/redhat"
+	"github.com/aquasecurity/trivy/pkg/scanner/ospkg/suse"
 	"github.com/aquasecurity/trivy/pkg/scanner/ospkg/ubuntu"
 	"github.com/aquasecurity/trivy/pkg/types"
 	"golang.org/x/xerrors"
@@ -50,6 +51,10 @@ func Scan(files extractor.FileMap) (string, string, []types.DetectedVulnerabilit
 		s = amazon.NewScanner()
 	case fos.Oracle:
 		s = oracle.NewScanner()
+	case fos.OpenSUSELeap:
+		s = suse.NewScanner(fos.OpenSUSELeap)
+	case fos.SLES:
+		s = suse.NewScanner(fos.SLES)
 	default:
 		log.Logger.Warnf("unsupported os : %s", os.Family)
 		return "", "", nil, nil
