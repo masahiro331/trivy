@@ -331,6 +331,26 @@ func TestRun_WithTar(t *testing.T) {
 			},
 			golden: "testdata/oraclelinux-8-slim.json.golden",
 		},
+		{
+			name: "opensuse 15.1 integration",
+			testArgs: args{
+				Version:    "dev",
+				SkipUpdate: true,
+				Format:     "json",
+				Input:      "testdata/fixtures/opensuse-leap-151.tar.gz",
+			},
+			golden: "testdata/opensuse-leap-151.json.golden",
+		},
+		{
+			name: "opensusex tumbleweed integration",
+			testArgs: args{
+				Version:    "dev",
+				SkipUpdate: true,
+				Format:     "json",
+				Input:      "testdata/fixtures/opensuse-tumbleweed.tar.gz",
+			},
+			golden: "testdata/opensuse-tumbleweed.json.golden",
+		},
 	}
 
 	for _, c := range cases {

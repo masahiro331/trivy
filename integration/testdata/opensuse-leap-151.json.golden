@@ -1,0 +1,79 @@
+[
+  {
+    "Target": "testdata/fixtures/opensuse-leap-151.tar.gz (opensuse.leap 15.1)",
+    "Vulnerabilities": [
+      {
+        "VulnerabilityID": "CVE-2019-17594",
+        "PkgName": "libncurses6",
+        "InstalledVersion": "6.1-lp151.5.41",
+        "FixedVersion": "6.1-lp151.6.3",
+        "Description": "There is a heap-based buffer over-read in the _nc_find_entry function in tinfo/comp_hash.c in the terminfo library in ncurses before 6.1-20191012.",
+        "Severity": "MEDIUM",
+        "References": [
+          "https://lists.gnu.org/archive/html/bug-ncurses/2019-10/msg00017.html",
+          "https://lists.gnu.org/archive/html/bug-ncurses/2019-10/msg00045.html"
+        ]
+      },
+      {
+        "VulnerabilityID": "CVE-2019-17595",
+        "PkgName": "libncurses6",
+        "InstalledVersion": "6.1-lp151.5.41",
+        "FixedVersion": "6.1-lp151.6.3",
+        "Description": "There is a heap-based buffer over-read in the fmt_entry function in tinfo/comp_hash.c in the terminfo library in ncurses before 6.1-20191012.",
+        "Severity": "MEDIUM",
+        "References": [
+          "https://lists.gnu.org/archive/html/bug-ncurses/2019-10/msg00013.html",
+          "https://lists.gnu.org/archive/html/bug-ncurses/2019-10/msg00045.html"
+        ]
+      },
+      {
+        "VulnerabilityID": "CVE-2019-17594",
+        "PkgName": "ncurses-utils",
+        "InstalledVersion": "6.1-lp151.5.41",
+        "FixedVersion": "6.1-lp151.6.3",
+        "Description": "There is a heap-based buffer over-read in the _nc_find_entry function in tinfo/comp_hash.c in the terminfo library in ncurses before 6.1-20191012.",
+        "Severity": "MEDIUM",
+        "References": [
+          "https://lists.gnu.org/archive/html/bug-ncurses/2019-10/msg00017.html",
+          "https://lists.gnu.org/archive/html/bug-ncurses/2019-10/msg00045.html"
+        ]
+      },
+      {
+        "VulnerabilityID": "CVE-2019-17595",
+        "PkgName": "ncurses-utils",
+        "InstalledVersion": "6.1-lp151.5.41",
+        "FixedVersion": "6.1-lp151.6.3",
+        "Description": "There is a heap-based buffer over-read in the fmt_entry function in tinfo/comp_hash.c in the terminfo library in ncurses before 6.1-20191012.",
+        "Severity": "MEDIUM",
+        "References": [
+          "https://lists.gnu.org/archive/html/bug-ncurses/2019-10/msg00013.html",
+          "https://lists.gnu.org/archive/html/bug-ncurses/2019-10/msg00045.html"
+        ]
+      },
+      {
+        "VulnerabilityID": "CVE-2019-17594",
+        "PkgName": "terminfo-base",
+        "InstalledVersion": "6.1-lp151.5.41",
+        "FixedVersion": "6.1-lp151.6.3",
+        "Description": "There is a heap-based buffer over-read in the _nc_find_entry function in tinfo/comp_hash.c in the terminfo library in ncurses before 6.1-20191012.",
+        "Severity": "MEDIUM",
+        "References": [
+          "https://lists.gnu.org/archive/html/bug-ncurses/2019-10/msg00017.html",
+          "https://lists.gnu.org/archive/html/bug-ncurses/2019-10/msg00045.html"
+        ]
+      },
+      {
+        "VulnerabilityID": "CVE-2019-17595",
+        "PkgName": "terminfo-base",
+        "InstalledVersion": "6.1-lp151.5.41",
+        "FixedVersion": "6.1-lp151.6.3",
+        "Description": "There is a heap-based buffer over-read in the fmt_entry function in tinfo/comp_hash.c in the terminfo library in ncurses before 6.1-20191012.",
+        "Severity": "MEDIUM",
+        "References": [
+          "https://lists.gnu.org/archive/html/bug-ncurses/2019-10/msg00013.html",
+          "https://lists.gnu.org/archive/html/bug-ncurses/2019-10/msg00045.html"
+        ]
+      }
+    ]
+  }
+]
