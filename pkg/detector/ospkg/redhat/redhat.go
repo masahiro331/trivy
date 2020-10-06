@@ -37,6 +37,10 @@ var (
 	}
 )
 
+const (
+	RemiRepository = ".remi"
+)
+
 type Scanner struct {
 	vs dbTypes.VulnSrc
 }
@@ -64,6 +68,12 @@ func (s *Scanner) Detect(osVer string, pkgs []ftypes.Package) ([]types.DetectedV
 		}
 
 		installed := utils.FormatVersion(pkg)
+
+		// Skip remi repository related issue: https://github.com/aquasecurity/trivy/issues/649
+		if strings.HasSuffix(installed, RemiRepository) {
+			continue
+		}
+
 		installedVersion := version.NewVersion(installed)
 
 		for _, adv := range advisories {
