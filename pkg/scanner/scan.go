@@ -9,6 +9,8 @@ import (
 	"github.com/aquasecurity/fanal/artifact"
 	aimage "github.com/aquasecurity/fanal/artifact/image"
 	flocal "github.com/aquasecurity/fanal/artifact/local"
+	"github.com/aquasecurity/fanal/artifact/vm"
+
 	"github.com/aquasecurity/fanal/artifact/remote"
 	"github.com/aquasecurity/fanal/cache"
 	"github.com/aquasecurity/fanal/image"
@@ -45,6 +47,12 @@ var StandaloneArchiveSet = wire.NewSet(
 // StandaloneFilesystemSet binds filesystem dependencies
 var StandaloneFilesystemSet = wire.NewSet(
 	flocal.NewArtifact,
+	StandaloneSuperSet,
+)
+
+// StandaloneVirtualMachineSet binds virtual machine dependencies
+var StandaloneVirtualMachineSet = wire.NewSet(
+	vm.NewArtifact,
 	StandaloneSuperSet,
 )
 

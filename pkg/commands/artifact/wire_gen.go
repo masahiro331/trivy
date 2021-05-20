@@ -12,6 +12,7 @@ import (
 	image2 "github.com/aquasecurity/fanal/artifact/image"
 	local2 "github.com/aquasecurity/fanal/artifact/local"
 	"github.com/aquasecurity/fanal/artifact/remote"
+	"github.com/aquasecurity/fanal/artifact/vm"
 	"github.com/aquasecurity/fanal/cache"
 	"github.com/aquasecurity/fanal/image"
 	"github.com/aquasecurity/trivy-db/pkg/db"
@@ -24,6 +25,16 @@ import (
 )
 
 // Injectors from inject.go:
+
+func initializeVirtualMachineScanner(ctx context.Context, dir string, artifactCache cache.ArtifactCache, localArtifactCache cache.LocalArtifactCache, disableAnalyzers []analyzer.Type) (scanner.Scanner, func(), error) {
+	applierApplier := applier.NewApplier(localArtifactCache)
+	detector := ospkg.Detector{}
+	localScanner := local.NewScanner(applierApplier, detector)
+	artifact := vm.NewArtifact(dir, artifactCache, disableAnalyzers)
+	scannerScanner := scanner.NewScanner(localScanner, artifact)
+	return scannerScanner, func() {
+	}, nil
+}
 
 func initializeDockerScanner(ctx context.Context, imageName string, artifactCache cache.ArtifactCache, localArtifactCache cache.LocalArtifactCache, timeout time.Duration, disableAnalyzers []analyzer.Type) (scanner.Scanner, func(), error) {
 	applierApplier := applier.NewApplier(localArtifactCache)

@@ -281,6 +281,7 @@ func NewApp(version string) *cli.App {
 	app.Commands = []*cli.Command{
 		NewImageCommand(),
 		NewFilesystemCommand(),
+		NewVirtualMachineCommand(),
 		NewRepositoryCommand(),
 		NewClientCommand(),
 		NewServerCommand(),
@@ -382,6 +383,38 @@ func NewImageCommand() *cli.Command {
 		Usage:     "scan an image",
 		Action:    artifact.ImageRun,
 		Flags:     imageFlags,
+	}
+}
+
+// NewVirtualMachineCommand is the factory method to add virtual machine scanner command
+func NewVirtualMachineCommand() *cli.Command {
+	return &cli.Command{
+		Name:      "virtualmachine",
+		Aliases:   []string{"vm"},
+		ArgsUsage: "vmdk file",
+		Usage:     "scan vmdk file",
+		Action:    artifact.VirtualMachineRun,
+		Flags: []cli.Flag{
+			&templateFlag,
+			&formatFlag,
+			&inputFlag,
+			&severityFlag,
+			&outputFlag,
+			&exitCodeFlag,
+			&skipUpdateFlag,
+			&clearCacheFlag,
+			&ignoreUnfixedFlag,
+			&removedPkgsFlag,
+			&vulnTypeFlag,
+			&ignoreFileFlag,
+			&cacheBackendFlag,
+			&timeoutFlag,
+			&noProgressFlag,
+			&ignorePolicy,
+			&listAllPackages,
+			&skipFiles,
+			&skipDirs,
+		},
 	}
 }
 

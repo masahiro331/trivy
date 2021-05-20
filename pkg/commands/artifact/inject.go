@@ -14,6 +14,12 @@ import (
 	"github.com/aquasecurity/trivy/pkg/vulnerability"
 )
 
+func initializeVirtualMachineScanner(ctx context.Context, dir string, artifactCache cache.ArtifactCache,
+	localArtifactCache cache.LocalArtifactCache, disableAnalyzers []analyzer.Type) (scanner.Scanner, func(), error) {
+	wire.Build(scanner.StandaloneVirtualMachineSet)
+	return scanner.Scanner{}, nil, nil
+}
+
 func initializeDockerScanner(ctx context.Context, imageName string, artifactCache cache.ArtifactCache,
 	localArtifactCache cache.LocalArtifactCache, timeout time.Duration, disableAnalyzers []analyzer.Type) (
 	scanner.Scanner, func(), error) {

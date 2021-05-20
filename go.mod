@@ -32,6 +32,7 @@ require (
 	github.com/knqyf263/go-deb-version v0.0.0-20190517075300-09fca494f03d
 	github.com/knqyf263/go-rpm-version v0.0.0-20170716094938-74609b86c936
 	github.com/kylelemons/godebug v1.1.0
+	github.com/masahiro331/go-ext4-filesystem v0.0.0-20210515073007-911cadc9c313 // indirect
 	github.com/masahiro331/go-mvn-version v0.0.0-20210429150710-d3157d602a08
 	github.com/mitchellh/copystructure v1.1.1 // indirect
 	github.com/olekukonko/tablewriter v0.0.4
@@ -53,3 +54,7 @@ require (
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
 	k8s.io/utils v0.0.0-20201110183641-67b214c5f920
 )
+
+replace github.com/aquasecurity/fanal => ../fanal
+
+replace github.com/masahiro331/go-ext4-filesystem => ../../masahiro331/go-ext4-filesystem
