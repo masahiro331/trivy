@@ -52,6 +52,8 @@ func Write(format string, output io.Writer, severities []dbTypes.Severity, repor
 		writer = &TableWriter{Output: output, Light: light, Severities: severities}
 	case "json":
 		writer = &JSONWriter{Output: output}
+	case "cyclonedx":
+		writer = &CycloneDXWriter{Output: output}
 	case "template":
 		var err error
 		if writer, err = NewTemplateWriter(output, outputTemplate); err != nil {
